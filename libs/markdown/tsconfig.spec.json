@@ -4,8 +4,7 @@
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
     "allowSyntheticDefaultImports": true,
-    "types": ["jest", "node"],
-    "jsx": "react"
+    "types": ["node" ,"fs","path"]
   },
   "include": [
     "**/*.test.ts",

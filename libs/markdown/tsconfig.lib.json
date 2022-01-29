@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "types": []
+  },
+  "include": ["**/*.ts", "src/lib/markdown.ts", "src/lib/markdownToHtml.ts"],
+  "exclude": ["**/*.spec.ts"]
+}
