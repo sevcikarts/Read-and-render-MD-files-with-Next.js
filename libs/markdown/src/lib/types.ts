@@ -9,5 +9,5 @@ export interface FrontMatter {
 
   export interface MarkdownRenderingResult {
     frontMatter: FrontMatter;
-    html: string;
+    content: string;
   }
