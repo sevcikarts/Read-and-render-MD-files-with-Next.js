@@ -4,7 +4,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 import { MarkdownDocument } from './types';
-import {markdownToHtml} from './markdownToHtml'
+import { serialize } from 'next-mdx-remote/serialize';
 
 export const getParsedFileContentBySlug  = (
   slug: string,
@@ -22,8 +22,6 @@ export const getParsedFileContentBySlug  = (
   };
 };
 
-export const renderMarkdown = async (
-  markdownContent: string
-): Promise<string> => {
-  return await markdownToHtml(markdownContent || '');
+export const renderMarkdown = (markdownContent: string) => {
+  return serialize(markdownContent || '');
 };

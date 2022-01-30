@@ -9,6 +9,8 @@ import {
   renderMarkdown,
 } from '@juridev/markdown';
 
+import { MDXRemote } from 'next-mdx-remote';
+import { mdxElements } from '@juridev/shared/mdx-elements';
 interface ArticleProps extends ParsedUrlQuery {
   slug: string;
 }
@@ -44,16 +46,16 @@ export const getStaticProps: GetStaticProps<MarkdownRenderingResult> = async ({
 
   // generate HTML
   const renderedHTML = await renderMarkdown(articleMarkdownContent.content);
-
+console.log(renderedHTML);
   return {
     props: {
       frontMatter: articleMarkdownContent.frontMatter,
-      content: renderedHTML,
+      html: renderedHTML,
     },
   };
 };
 
-function Article({ frontMatter, content }) {
+export function Article({ frontMatter, html }) {
   return (
     <div className="md:container md:mx-auto">
       <article>
@@ -63,7 +65,7 @@ function Article({ frontMatter, content }) {
         <div>by {frontMatter.author.name}</div>
         <hr />
 
-        <main dangerouslySetInnerHTML={{ __html: content }} />
+        <MDXRemote {...html} components={mdxElements} />
       </article>
     </div>
   );
